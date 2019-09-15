@@ -1,0 +1,23 @@
+$text: #C0C4CE;
+$bd: rgba(192, 196, 206, 0.127321);
+
+.footer {
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  color: $text;
+  background: $bd;
+  a {
+    color: $text;
+    text-decoration: none;
+  }
+
+  .footer_container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 264px;
+    padding: 20px 0 32px;
+    margin: auto;
+  }
+}
