@@ -9,7 +9,6 @@ class App extends React.Component {
     super(props);
 
     Api.init();
-
   }
 
   render() {
