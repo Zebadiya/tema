@@ -1,0 +1,21 @@
+Index: src/setupProxy.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/setupProxy.js	(date 1569531746771)
++++ src/setupProxy.js	(date 1569531746771)
+@@ -0,0 +1,13 @@
++// const createProxy = require('http-proxy-middleware');
++//
++// const proxy = createProxy({
++//   target: 'https://apiko-marketplace-api-2019.herokuapp.com/',
++//   pathRewrite: {
++//     '^/api': '',
++//   },
++//   changeOrigin: true,
++// });
++//
++// module.exports = (app) => {
++//   app.use('/api, proxy');
++// };

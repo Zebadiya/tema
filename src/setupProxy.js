@@ -9,5 +9,5 @@ const proxy = createProxy({
 });
 
 module.exports = (app) => {
-  app.use('/api, proxy');
+  app.use('/api', proxy);
 };
