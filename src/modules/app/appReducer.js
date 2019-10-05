@@ -1,6 +1,5 @@
 import { handleActions } from '@letapp/redux-actions';
 import * as actions from './appActions';
-import { initialization } from './appActions';
 
 const INITIAL_STATE = {
   isLoading: false,

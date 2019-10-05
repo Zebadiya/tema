@@ -7,6 +7,7 @@ export function init() {
       dispatch(actions.initialization.start());
 
       Api.init();
+
       dispatch(actions.initialization.success());
     } catch (err) {
       dispatch(actions.initialization.error({ message: err.message}),);

@@ -3,7 +3,7 @@ import axios from 'axios';
 const urls = {
   login: '/api/auth/login',
   register: '/api/auth/register',
-}
+};
 
 export const Auth = {
   _token: null,

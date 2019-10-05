@@ -1,4 +1,4 @@
-import * as actions from './appActions';
+import * as actions from './authActions';
 import Api from '../../api';
 
 export function login(body) {
