@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import LoginView from './LoginView';
 import { routes } from '../router';
 import { withRouter } from 'react-router-dom';
-import authOperations from '../../modules';
+import { authOperations } from '../../modules/auth';
 
 function mapStateToProps(state) {
   console.log(state);
@@ -12,9 +12,11 @@ function mapStateToProps(state) {
   };
 }
 
-const mapDispatchToProps = {
-  login: authOperations.login,
-};
+function mapDispatchToProps() {
+  return {
+    login: authOperations.login,
+  }
+}
 
 const enhancer = compose(
   withRouter,
