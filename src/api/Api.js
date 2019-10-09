@@ -3,6 +3,7 @@ import axios from 'axios';
 const urls = {
   login: '/api/auth/login',
   register: '/api/auth/register',
+  getViewer: '/api/account/user',
 };
 
 export const Auth = {
@@ -50,9 +51,16 @@ export const Auth = {
   },
 
   _setTokenToAxios(token) {
-    axios.defaults.headers.Authorization = `Bearer ${token}`;
+    axios.defaults.headers.common.Authorization = `Bearer ${token}`;
     console.log('axios', axios)
   },
+};
+
+export const Viewer = {
+  get() {
+    console.log("axiossss", axios.defaults);
+    return axios.get(urls.getViewer)
+  }
 };
 
 export function init() {
