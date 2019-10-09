@@ -24,7 +24,7 @@ export const Auth = {
       this._token = JSON.parse(token);
       this._setTokenToAxios(token);
     } catch (err) {
-      console.log(err);
+      console.error(err);
     }
   },
 
@@ -50,7 +50,8 @@ export const Auth = {
   },
 
   _setTokenToAxios(token) {
-    axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+    axios.defaults.headers.Authorization = `Bearer ${token}`;
+    console.log('axios', axios)
   },
 };
 

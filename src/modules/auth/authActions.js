@@ -1,4 +1,4 @@
-import { createAsyncActions} from '@letapp/redux-actions';
+import { createAsyncActions } from '@letapp/redux-actions';
 
 export const login = createAsyncActions(
   'auth/LOGIN',

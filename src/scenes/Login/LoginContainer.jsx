@@ -12,11 +12,9 @@ function mapStateToProps(state) {
   };
 }
 
-function mapDispatchToProps() {
-  return {
+const mapDispatchToProps = {
     login: authOperations.login,
-  }
-}
+};
 
 const enhancer = compose(
   withRouter,
