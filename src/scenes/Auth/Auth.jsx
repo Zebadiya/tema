@@ -3,9 +3,9 @@ import s from "./Auth.module.scss"
 import Header from '../../components/Header/Header';
 import { Redirect, Route, Switch } from 'react-router-dom';
 import { routes } from '../router';
-import Register from '../Register/Register';
 import Login from '../Login/LoginContainer';
 import Api from '../../api';
+import Register from '../Register/Register';
 
 function Auth(){
   return (

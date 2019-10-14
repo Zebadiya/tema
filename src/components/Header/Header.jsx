@@ -8,10 +8,14 @@ import logo_light from '../../image/icons/Logofull-light.svg';
 import logo from '../../image/icons/Logofull.svg';
 import heart from '../../image/icons/heart-outline.svg';
 import heart_light from '../../image/icons/heart-outline-light.svg';
+import Logout from './Logout/Logout';
 
 
-function Header({handleLogout, isLightDesign = false}) {
+function Header({isLightDesign = false}) {
   const {isLoggedIn} = Api.Auth;
+  const handleLogout = () => {
+    Api.Auth.logout();
+  };
   return (
     <header className={`${s.header} ${isLightDesign ? s.light : ''}`}>
       <div className={s.header_container}>
@@ -25,7 +29,7 @@ function Header({handleLogout, isLightDesign = false}) {
           <Link to={routes.sell} className={s.sell}>Sell</Link>
           <div className={s.log_button}>
             {isLoggedIn
-              ? <Link to={routes.home} onClick={handleLogout}>Logout</Link>
+              ? <Logout handleLogout={handleLogout}/>
               : <Link to={routes.login}>Login</Link>
             }
           </div>
@@ -34,7 +38,6 @@ function Header({handleLogout, isLightDesign = false}) {
               ? <img className={s.favorite} src={heart_light} alt="Favorite"/>
               : <img className={s.favorite} src={heart} alt="Favorite"/>
             }
-
           </Link>
         </div>
       </div>
@@ -42,13 +45,6 @@ function Header({handleLogout, isLightDesign = false}) {
   );
 }
 
-const enhancer = compose(
-  withRouter,
-  withHandlers({
-    handleLogout: () => () => {
-      Api.Auth.logout();
-    }
-  }),
-);
 
-export default enhancer(Header);
+
+export default Header;

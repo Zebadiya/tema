@@ -33,7 +33,9 @@ function mapStateToProps(state) {
 }
 
 const AppConnected = connect(mapStateToProps)(App);
-const AppProvider = () => <Provider store={store}><AppConnected /></Provider>;
+function AppProvider() {
+  return <Provider store={store}><AppConnected /></Provider>
+}
 
 ReactDOM.render(
   <AppProvider />,

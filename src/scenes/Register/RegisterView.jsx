@@ -1,14 +1,14 @@
 import React from 'react';
-import s from './Login.module.scss';
-import { routes } from '../router';
+import s from './Register.module.scss';
 import { Link } from 'react-router-dom';
+import { routes } from '../router';
 import { Input } from '../../components';
 
-function Login({ fields, handleLogin, isLoading, handleFieldChange }) {
+function Register({fields, handleFieldChange, isLoading, handleLogin}) {
   return(
-    <div className={s.login_container}>
-      <div className={s.login}>
-        <div className={s.login_title}>Login</div>
+    <div className={s.register_container}>
+      <div className={s.register}>
+        <div className={s.register_title}>register</div>
         <Input
           fields={fields}
           name="email"
@@ -28,13 +28,13 @@ function Login({ fields, handleLogin, isLoading, handleFieldChange }) {
 
         <a className={s.remind} href="#">Don’t remember password?</a>
 
-        <button className={s.login_button} type="button" onClick={handleLogin}>
-          {isLoading ? 'Loading' : 'Continue'}
+        <button className={s.register_button} type="button" onClick={handleLogin}>
+          {isLoading ? 'Loading' : 'Register'}
         </button>
       </div>
       <div className={s.no_register}>
-        <span className={s.no_register_text}>I have no account,
-          <Link to={routes.register}> register now</Link>
+        <span className={s.no_register_text}>I already have an account,
+          <Link to={routes.login}> log in</Link>
         </span>
       </div>
 
@@ -42,6 +42,4 @@ function Login({ fields, handleLogin, isLoading, handleFieldChange }) {
   )
 }
 
-Login.propTypes = {};
-
-export default Login;
+export default Register;
