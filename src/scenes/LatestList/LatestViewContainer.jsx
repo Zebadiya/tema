@@ -13,14 +13,11 @@ const mapDispatchToProps = {
   fetchLatest: productsOperations.fetchLatest
 };
 
-
-const enhancer = connect(mapStateToProps, mapDispatchToProps)();
-
 function LatestViewContainer() {
 
   return (
-    enhancer(LatestList)
+    <LatestList />
   )
 }
 
-export default enhancer(LatestList)
+export default connect(mapStateToProps, mapDispatchToProps)(LatestViewContainer);

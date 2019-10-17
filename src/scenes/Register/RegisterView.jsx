@@ -4,31 +4,48 @@ import { Link } from 'react-router-dom';
 import { routes } from '../router';
 import { Input } from '../../components';
 
-function Register({fields, handleFieldChange, isLoading, handleLogin}) {
+function Register({registerData, changeRegisterData, isLoading, handleRegister}) {
   return(
     <div className={s.register_container}>
       <div className={s.register}>
         <div className={s.register_title}>register</div>
         <Input
-          fields={fields}
+          fields={registerData.fields}
           name="email"
           type="email"
           placeholder="example@gmail.com"
           label="EMAIL"
-          onChange={handleFieldChange}
+          onChange={changeRegisterData}
         />
 
         <Input
-          fields={fields}
+          fields={registerData.fields}
+          name="fullName"
+          type="text"
+          placeholder="Quentin Tarantino"
+          label="FULL NAME"
+          onChange={changeRegisterData}
+        />
+
+        <Input
+          fields={registerData.fields}
           name="password"
           type="password"
           label="PASSWORD"
-          onChange={handleFieldChange}
+          onChange={changeRegisterData}
+        />
+
+        <Input
+          fields={registerData.fields}
+          name="repeatPassword"
+          type="password"
+          label="PASSWORD AGAIN"
+          onChange={changeRegisterData}
         />
 
         <a className={s.remind} href="#">Don’t remember password?</a>
 
-        <button className={s.register_button} type="button" onClick={handleLogin}>
+        <button className={s.register_button} type="button" onClick={handleRegister}>
           {isLoading ? 'Loading' : 'Register'}
         </button>
       </div>

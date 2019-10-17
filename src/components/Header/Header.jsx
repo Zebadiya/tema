@@ -16,6 +16,7 @@ function Header({isLightDesign = false}) {
   const handleLogout = () => {
     Api.Auth.logout();
   };
+
   return (
     <header className={`${s.header} ${isLightDesign ? s.light : ''}`}>
       <div className={s.header_container}>

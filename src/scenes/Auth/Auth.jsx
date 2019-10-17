@@ -5,7 +5,7 @@ import { Redirect, Route, Switch } from 'react-router-dom';
 import { routes } from '../router';
 import Login from '../Login/LoginContainer';
 import Api from '../../api';
-import Register from '../Register/Register';
+import Register from '../Register/RegisterContainer';
 
 function Auth(){
   return (

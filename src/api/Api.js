@@ -29,6 +29,10 @@ export const Auth = {
     }
   },
 
+  register(body) {
+    return axios.post(urls.register, body);
+  },
+
   login(body) {
     return axios.post(urls.login, body);
   },
