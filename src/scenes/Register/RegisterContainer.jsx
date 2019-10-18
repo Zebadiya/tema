@@ -28,8 +28,10 @@ function RegisterContainer() {
   const [registerData, setRegisterData] = useState(initialRegData);
 
   const changeRegisterData = useCallback((name, value) => {
-    return setRegisterData((prevState) => Object.assign({}, prevState, {[`fields${name}]`]: value}))
-  }, []);
+    setRegisterData((prevState) => {
+      return Object.assign({}, ...prevState, {prevState[`${name}`]: value })
+    })
+  }, [registerData]);
 
   const handleRegister = async (props) => {
     console.log(registerData.fields);
