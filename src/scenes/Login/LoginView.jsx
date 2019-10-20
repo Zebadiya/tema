@@ -1,8 +1,8 @@
 import React from 'react';
 import s from './Login.module.scss';
-import { routes } from '../router';
 import { Link } from 'react-router-dom';
 import { Input } from '../../components';
+import { routes } from '../routes';
 
 function Login({ fields, handleLogin, isLoading, handleFieldChange }) {
   return(

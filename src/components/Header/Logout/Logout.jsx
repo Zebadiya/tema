@@ -1,7 +1,7 @@
 import React from 'react';
 import s from './Logout.module.scss';
 import { Link } from 'react-router-dom';
-import { routes } from '../../../scenes/router';
+import { routes } from '../../../scenes/routes';
 
 function Logout({handleLogout}) {
   return <div className={s.logout_container}>

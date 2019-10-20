@@ -21,11 +21,12 @@ export default handleActions(
         isError: false,
       }
     }),
-    [actions.fetchLatest.success]: (state) => ({
+    [actions.fetchLatest.success]: (state, action) => ({
       ...state,
       latest: {
         ...state.latest,
         isLoading: false,
+        items: action.payload,
       }
     }),
     [actions.fetchLatest.error]: (state, action) => ({

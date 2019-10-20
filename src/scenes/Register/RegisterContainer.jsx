@@ -1,21 +1,22 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import Register from './RegisterView';
-import { routes } from '../router';
 import * as authOperations from '../../modules/auth/authOperations';
 import { connect } from 'react-redux';
+import { routes } from '../routes';
+
 
 function mapStateToProps(state) {
   console.log(state);
   return {
-    isLoading: state.auth.login.isLoading,
+    isLoading: state.auth.register.isLoading,
   };
 }
 
 const mapDispatchToProps = {
-  login: authOperations.register,
+  register: authOperations.register,
 };
 
-function RegisterContainer() {
+function RegisterContainer(props) {
   const initialRegData = {
     fields: {
       email: '',
@@ -28,15 +29,13 @@ function RegisterContainer() {
   const [registerData, setRegisterData] = useState(initialRegData);
 
   const changeRegisterData = useCallback((name, value) => {
-    setRegisterData((prevState) => {
-      return Object.assign({}, ...prevState, {prevState[`${name}`]: value })
-    })
-  }, [registerData]);
+      setRegisterData((prevState) =>({...prevState, fields: {...prevState.fields, [name]: value }})
+    )
+  }, []);
 
-  const handleRegister = async (props) => {
-    console.log(registerData.fields);
-    await props.login(props.fields);
-    props.history.push(routes.home)
+  const handleRegister = async () => {
+    await props.register(registerData.fields);
+    props.history.push(routes.login)
   };
 
   return(

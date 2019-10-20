@@ -11,24 +11,9 @@ import Profile from './Profile/Profile';
 import Users from './Users/Users';
 import Listings from './Listings/Listings';
 import Search from './Search/Search';
+import AddProduct from './AddProduct/AddProductContainer';
 import Api from '../api';
-
-export const routes = {
-  home: '/',
-  login: '/auth/login',
-  register: '/auth/register',
-  auth: '/auth',
-  inbox: '/inbox',
-  sell: '/sell',
-  favorite: '/favorite',
-  privacy: '/privacy',
-  terms: './terms',
-  bookmarks: './bookmarks',
-  profile: './profile',
-  users: './users/:id',
-  listings: './listings/:id',
-  search: './search',
-};
+import {routes} from './routes';
 
 function Router() {
   return (
@@ -44,6 +29,7 @@ function Router() {
         <Route path={routes.users} component={Users} />
         <Route path={routes.listings} component={Listings} />
         <Route path={routes.search} component={Search} />
+        <Route path={routes.addProduct} component={AddProduct} />
         <Auth />
         <Route component={NotFound} />
       </Switch>

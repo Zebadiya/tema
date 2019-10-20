@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
-import { routes } from '../../scenes/router';
+import { routes } from '../../scenes/routes';
 import s from './Header.module.scss';
 import { compose, withHandlers } from 'recompose';
 import * as Api from '../../api/Api';

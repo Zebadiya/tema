@@ -1,7 +1,7 @@
 import * as actions from './productsActions';
 import Api from '../../api';
 
-export function productsOperations() {
+export function products() {
   return async function fetchLatestThunk(dispatch) {
     try {
       dispatch(actions.fetchLatest.start());

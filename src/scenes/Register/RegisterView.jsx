@@ -1,8 +1,8 @@
 import React from 'react';
 import s from './Register.module.scss';
 import { Link } from 'react-router-dom';
-import { routes } from '../router';
 import { Input } from '../../components';
+import { routes } from '../routes';
 
 function Register({registerData, changeRegisterData, isLoading, handleRegister}) {
   return(

@@ -1,8 +1,9 @@
 import React from 'react';
 import s from "./Inbox.module.scss";
 import { Redirect } from 'react-router-dom';
-import { routes } from '../router';
+
 import Api from '../../api';
+import { routes } from '../routes';
 
 function Inbox() {
   if (!Api.Auth.isLoggedIn) {

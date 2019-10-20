@@ -2,10 +2,10 @@ import * as React from 'react';
 import s from "./Auth.module.scss"
 import Header from '../../components/Header/Header';
 import { Redirect, Route, Switch } from 'react-router-dom';
-import { routes } from '../router';
 import Login from '../Login/LoginContainer';
 import Api from '../../api';
 import Register from '../Register/RegisterContainer';
+import { routes } from '../routes';
 
 function Auth(){
   return (
