@@ -19,7 +19,7 @@ function Router() {
   return (
     <BrowserRouter>
       <Switch>
-        <Route exact path={routes.home} component={Home} />
+        <Route path={routes.home} component={Home} />
         <Route path={routes.auth} component={Auth} />
         <PrivateRoute path={routes.inbox} component={Inbox} />
         <Route path={routes.privacy} component={Privacy} />

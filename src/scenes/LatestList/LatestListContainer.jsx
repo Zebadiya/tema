@@ -5,7 +5,9 @@ import LatestList from './LatestListView';
 
 const mapStateToProps = (state) => {
   return {
-    list: state.products.latest.items,
+    list: state.products.latest.items.map(
+      (i) => state.entities.products[i],
+    ),
     isLoading: state.products.latest.isLoading,
   };
 };

@@ -14,4 +14,5 @@ export const routes = {
   listings: './listings/:id',
   search: './search',
   addProduct: '/products/add',
+  product: '/products/:id',
 };

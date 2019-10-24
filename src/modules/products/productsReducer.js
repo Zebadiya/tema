@@ -8,6 +8,11 @@ const INITIAL_STATE = {
     isError: false,
     error: null,
   },
+  product: {
+    isLoading: false,
+    isError: false,
+    error: null,
+  },
 };
 
 export default handleActions(
@@ -26,13 +31,39 @@ export default handleActions(
       latest: {
         ...state.latest,
         isLoading: false,
-        items: action.payload,
+        items: action.payload.result,
       }
     }),
     [actions.fetchLatest.error]: (state, action) => ({
       ...state,
       latest: {
         ...state.latest,
+        error: action.payload,
+        isLoading: true,
+        isError: true,
+      }
+    }),
+
+    [actions.fetchProduct.start]: (state) => ({
+      ...state,
+      product: {
+        ...state.product,
+        error: null,
+        isLoading: true,
+        isError: false,
+      }
+    }),
+    [actions.fetchProduct.success]: (state) => ({
+      ...state,
+      product: {
+        ...state.product,
+        isLoading: false,
+      }
+    }),
+    [actions.fetchProduct.error]: (state, action) => ({
+      ...state,
+      product: {
+        ...state.product,
         error: action.payload,
         isLoading: true,
         isError: true,
