@@ -1,3 +1,15 @@
 .latest_list {
-  color: #277367;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: minmax(100px, auto);
+  grid-column-gap: 10px;
+  grid-row-gap: 20px;
+  width: 860px;
+  margin: 15px auto;
+}
+
+@media (max-width: 992px) {
+  .latest_list {
+    width: 90%;
+  }
 }

@@ -31,5 +31,3 @@ function AddProductContainer(props) {
 const AddProductConnect = connect(mapStateToProps, mapDispatchToProps)(AddProductContainer);
 
 export default withRouter(AddProductConnect);
-
-// export default connect(mapStateToProps, mapDispatchToProps)(AddProduct);

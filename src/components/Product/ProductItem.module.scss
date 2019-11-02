@@ -1,0 +1,39 @@
+$text-color: #373738;
+$price-color: #101010;
+
+.product_block {
+  display: block;
+  border-radius: 4px;
+  border-color: rgba(211, 211, 211, 0.21);
+  text-decoration: none;
+  background-color: #FFF;
+}
+.image_block {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  margin: 2px;
+  min-height: 180px;
+  border-radius: 4px;
+  background-color: rgba(199, 232, 242, 0.51);
+
+  img {
+    width: auto;
+    height: 180px;
+  }
+}
+.info_container {
+  padding: 10px 12px;
+
+  .title {
+    font-size: 15px;
+    color: $text-color;
+  }
+
+  .price {
+    font-size: 18px;
+    font-weight: bold;
+    color: $price-color;
+  }
+}

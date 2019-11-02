@@ -1,14 +1,14 @@
 import React from 'react';
-import s from './Logout.module.scss';
+import s from './InfoModal.module.scss';
 import { Link } from 'react-router-dom';
 import { routes } from '../../../scenes/routes';
 
-function Logout({handleLogout}) {
+function InfoModal({handleLogout, openModal}) {
   return <div className={s.logout_container}>
-    <div className={s.logout_icon}>
+    <div className={s.logout_icon} onClick={openModal}>
       <span className={s.logout_icon_text}>TZ</span>
     </div>
-    <div className={s.logout_modal}>
+    <div className={`logout_modal ${s.logout_modal}`}>
       <div className={s.modal_short_info}>
         <div className={s.logout_icon}>
           <span className={s.logout_icon_text}>TZ</span>
@@ -24,4 +24,4 @@ function Logout({handleLogout}) {
   </div>
 }
 
-export default Logout;
+export default InfoModal;

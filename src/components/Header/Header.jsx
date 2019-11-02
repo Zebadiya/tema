@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { routes } from '../../scenes/routes';
 import s from './Header.module.scss';
@@ -7,13 +7,31 @@ import logo_light from '../../image/icons/Logofull-light.svg';
 import logo from '../../image/icons/Logofull.svg';
 import heart from '../../image/icons/heart-outline.svg';
 import heart_light from '../../image/icons/heart-outline-light.svg';
-import Logout from './Logout/Logout';
+import { viewerOperations } from '../../modules/viewer';
+import InfoModal from './Logout/InfoModal';
+import { connect } from 'react-redux';
 
+const mapStateToProps = (state, props) => {
+  console.log("viewer", state);
+  return {
+    viewer: state.viewer.user,
+  };
+};
+
+const mapDispatchToProps = {
+  fetchViewer: viewerOperations.fetchViewer,
+};
 
 function Header({isLightDesign = false}) {
   const {isLoggedIn} = Api.Auth;
   const handleLogout = () => {
     Api.Auth.logout();
+  };
+
+  const openModal = () => {
+    const modal = document.getElementsByClassName("logout_modal")[0];
+    modal && modal.classList.toggle("open");
+    modal.style.display = modal.classList.contains("open") ? "block" : "none";
   };
 
   return (
@@ -29,7 +47,7 @@ function Header({isLightDesign = false}) {
           <Link to={routes.sell} className={s.sell}>Sell</Link>
           <div className={s.log_button}>
             {isLoggedIn
-              ? <Logout handleLogout={handleLogout}/>
+              ? <InfoModal handleLogout={handleLogout} openModal={openModal}/>
               : <Link to={routes.login}>Login</Link>
             }
           </div>
@@ -45,6 +63,6 @@ function Header({isLightDesign = false}) {
   );
 }
 
+const HeaderConnect = connect(mapStateToProps, mapDispatchToProps)(Header);
 
-
-export default Header;
+export default HeaderConnect;
