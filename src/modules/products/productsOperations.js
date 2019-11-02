@@ -26,7 +26,7 @@ export function fetchProduct(id) {
     try {
       dispatch(actions.fetchProduct.start());
 
-      const res = await Api.Products.get();
+      const res = await Api.Products.get(id);
 
       const { entities } = normalize(
         res.data,

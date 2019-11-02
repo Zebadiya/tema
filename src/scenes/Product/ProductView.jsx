@@ -1,11 +1,18 @@
 import React from 'react';
 import s from './Product.module.scss';
 
-function Product({props}) {
-  console.log("view", props.product);
+function Product({product, owner, isLoading}) {
+  const shouldShowLoading = isLoading || !product.owner;
   return (
     <div className={s.product}>
-      {props.product.title}
+      <div>
+        <p>Product:</p>
+        {product.title}
+      </div>
+      <div>
+       <p>Author:</p>
+        {shouldShowLoading ? 'Loading...' : owner.fullName}
+      </div>
     </div>
   )
 }

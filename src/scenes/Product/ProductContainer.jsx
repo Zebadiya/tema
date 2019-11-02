@@ -1,14 +1,15 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from "react-router";
-import { productsOperations } from '../../modules/products';
+import { productsOperations, productsSelectors } from '../../modules/products';
 import Product from './ProductView';
 
 
 const mapStateToProps = (state, props) => {
-  console.log('props', props);
   return {
-    product: state.entities.products[props.match.params.id],
+    product: productsSelectors.getProduct(state, props.match.params.id),
+    owner: productsSelectors.getProductOwner(state, props.match.params.id),
+    isLoading: state.products.product.isLoading,
   };
 };
 
@@ -17,14 +18,16 @@ const mapDispatchToProps = {
 };
 
 function AddProductContainer(props) {
-  console.log('container', props)
+  const {product, owner, isLoading} = props;
   useEffect(() => {
-    !props.product.owner && props.fetchProduct();
-  }, [props.product]);
+    !product.owner && props.fetchProduct(product.id);
+  }, []);
 
-  return <Product props={props}/>
+  return <Product product={product} owner={owner} isLoading={isLoading}/>
 }
 
-const AddProduct = withRouter(AddProductContainer);
+const AddProductConnect = connect(mapStateToProps, mapDispatchToProps)(AddProductContainer);
 
-export default connect(mapStateToProps, mapDispatchToProps)(AddProduct);
+export default withRouter(AddProductConnect);
+
+// export default connect(mapStateToProps, mapDispatchToProps)(AddProduct);

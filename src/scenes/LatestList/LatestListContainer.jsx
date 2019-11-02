@@ -1,13 +1,11 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { productsOperations } from '../../modules/products';
+import { productsOperations, productsSelectors } from '../../modules/products';
 import LatestList from './LatestListView';
 
 const mapStateToProps = (state) => {
   return {
-    list: state.products.latest.items.map(
-      (i) => state.entities.products[i],
-    ),
+    list: productsSelectors.getLatest(state),
     isLoading: state.products.latest.isLoading,
   };
 };
