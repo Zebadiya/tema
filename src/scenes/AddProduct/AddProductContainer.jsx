@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { fetchLatest } from '../../modules/products/productsActions';
 import { productsOperations } from '../../modules/products';
 import AddProduct from './AddProductView';
 

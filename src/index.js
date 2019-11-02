@@ -2,7 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider, connect } from 'react-redux';
 import Router from './scenes/router';
-import Api from './api'
 import store from './store/createStore';
 import { appOperations } from './modules/app';
 import './style.css';

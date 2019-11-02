@@ -19,6 +19,10 @@ export const getProductOwner = createSelector(
     const users = getUserEntities(state);
     const products = getProductEntities(state);
     const product = products[id];
+
+    if (!product) {
+      return undefined;
+    }
     return users[product.owner || product.ownerId];
   },
 (item) => item,

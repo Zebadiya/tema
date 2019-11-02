@@ -43,7 +43,7 @@ function Register({registerData, changeRegisterData, isLoading, handleRegister})
           onChange={changeRegisterData}
         />
 
-        <a className={s.remind} href="#">Don’t remember password?</a>
+        <a className={s.remind} href={routes.register}>Don’t remember password?</a>
 
         <button className={s.register_button} type="button" onClick={handleRegister}>
           {isLoading ? 'Loading' : 'Register'}

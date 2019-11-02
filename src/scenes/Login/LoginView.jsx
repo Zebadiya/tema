@@ -26,7 +26,7 @@ function Login({ fields, handleLogin, isLoading, handleFieldChange }) {
           onChange={handleFieldChange}
         />
 
-        <a className={s.remind} href="#">Don’t remember password?</a>
+        <a className={s.remind} href={routes.register}>Don’t remember password?</a>
 
         <button className={s.login_button} type="button" onClick={handleLogin}>
           {isLoading ? 'Loading' : 'Continue'}

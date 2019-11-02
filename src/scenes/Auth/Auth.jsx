@@ -9,7 +9,7 @@ import { routes } from '../routes';
 
 function Auth(){
   return (
-    <div>
+    <div className={s.auth}>
       <Header isLightDesign={true}/>
       <Switch>
         {Api.Auth.isLoggedIn && <Redirect to={routes.home}/>}

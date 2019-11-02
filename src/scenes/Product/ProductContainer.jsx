@@ -20,8 +20,10 @@ const mapDispatchToProps = {
 function AddProductContainer(props) {
   const {product, owner, isLoading} = props;
   useEffect(() => {
-    !product.owner && props.fetchProduct(product.id);
-  }, []);
+    if (!owner || !product) {
+      props.fetchProduct(props.match.params.id);
+    }
+  }, [owner, product, isLoading, props]);
 
   return <Product product={product} owner={owner} isLoading={isLoading}/>
 }

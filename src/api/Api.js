@@ -58,13 +58,11 @@ export const Auth = {
 
   _setTokenToAxios(token) {
     axios.defaults.headers.common.Authorization = `Bearer ${token}`;
-    console.log('axios', axios)
   },
 };
 
 export const Viewer = {
   get() {
-    console.log("axiossss", axios.defaults);
     return axios.get(urls.getViewer)
   }
 };

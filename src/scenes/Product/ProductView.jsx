@@ -2,7 +2,11 @@ import React from 'react';
 import s from './Product.module.scss';
 
 function Product({product, owner, isLoading}) {
-  const shouldShowLoading = isLoading || !product.owner;
+  const shouldShowLoading = isLoading || !owner;
+
+  if (!product) {
+    return <div>Loading...</div>
+  }
   return (
     <div className={s.product}>
       <div>

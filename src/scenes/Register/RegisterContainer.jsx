@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import Register from './RegisterView';
 import * as authOperations from '../../modules/auth/authOperations';
 import { connect } from 'react-redux';

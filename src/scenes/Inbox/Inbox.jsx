@@ -9,7 +9,7 @@ function Inbox() {
   if (!Api.Auth.isLoggedIn) {
     return <Redirect to={routes.login} />;
   }
-  return <div>Inbox</div>
+  return <div className={s.inbox}>Inbox</div>
 }
 
 export default Inbox;
