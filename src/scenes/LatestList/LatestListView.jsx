@@ -10,9 +10,12 @@ function LatestList({list, isLoading}) {
   }
   return (
     <div className={s.latest_list}>
+
       {list.map((item) => {
         return (
-          <ProductItem item={item}/>
+          <Link to={generatePath(routes.product, { id: item.id})}>
+            <ProductItem key={item.id} item={item}/>
+          </Link>
         )
       })}
     </div>

@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { withRouter } from "react-router";
 import { productsOperations, productsSelectors } from '../../modules/products';
 import Product from './ProductView';
+import { withRouter } from 'react-router';
 
 
 const mapStateToProps = (state, props) => {
@@ -28,6 +28,6 @@ function AddProductContainer(props) {
   return <Product product={product} owner={owner} isLoading={isLoading}/>
 }
 
-const AddProductConnect = connect(mapStateToProps, mapDispatchToProps)(AddProductContainer);
+const ProductConnect = connect(mapStateToProps, mapDispatchToProps)(AddProductContainer);
 
-export default withRouter(AddProductConnect);
+export default withRouter(ProductConnect);
