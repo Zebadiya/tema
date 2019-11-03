@@ -44,7 +44,7 @@ function Header({isLightDesign = false}) {
 
         </Link>
         <div className={s.header_left_side}>
-          <Link to={routes.sell} className={s.sell}>Sell</Link>
+          <Link to={routes.addProduct} className={s.sell}>Sell</Link>
           <div className={s.log_button}>
             {isLoggedIn
               ? <InfoModal handleLogout={handleLogout} openModal={openModal}/>

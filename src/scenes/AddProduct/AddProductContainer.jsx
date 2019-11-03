@@ -5,26 +5,22 @@ import AddProduct from './AddProductView';
 
 const mapStateToProps = (state) => {
   return {
-    list: state.products.latest.items,
-    isLoading: state.products.latest.isLoading,
+    isLoading: state.products.addProduct.isLoading,
   };
 };
 
 const mapDispatchToProps = {
-  fetchLatest: productsOperations.products
+  addProducts: productsOperations.addProducts,
 };
 
 function AddProductContainer(props) {
-  useEffect(() => {
-    if (props.list.length === 0) {
-      props.fetchLatest().then((res) => {
-        console.log('res', res);
-      });
-    }
-  });
+
+  const addNewProducts = async (body) => {
+    await props.addProducts(body);
+  };
 
   return (
-    <AddProduct list={props.list} isLoading={props.isLoading} />
+    <AddProduct addProducts={addNewProducts} isLoading={props.isLoading} />
   )
 }
 

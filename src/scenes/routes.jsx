@@ -4,7 +4,6 @@ export const routes = {
   register: '/auth/register',
   auth: '/auth',
   inbox: '/inbox',
-  sell: '/sell',
   favorite: '/favorite',
   privacy: '/privacy',
   terms: './terms',

@@ -73,6 +73,9 @@ export const Products = {
   },
   get(id) {
     return axios.get(`${urls.products}/${id}`);
+  },
+  addProduct(body) {
+      return axios.post(urls.products, body);
   }
 };
 

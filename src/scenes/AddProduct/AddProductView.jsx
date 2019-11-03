@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import s from './AddProduct.module.scss';
 import { FormContainer, InputAdd, InputTextAdd, InputImgAdd } from '../../components/Form';
 import { Footer, Header } from '../../components';
+import { FormContext } from '../../components/Form/FormContainer/FormContainer';
 
-function AddProduct({list, isLoading}) {
+function AddProduct({addProducts, isLoading}) {
   const initialValue = {
     title: '',
     location: '',
@@ -19,6 +20,8 @@ function AddProduct({list, isLoading}) {
       return undefined;
     }
   }
+
+  // const { formState } = useContext(FormContext);
 
   return (<div className={s.add_product}>
       <Header />
@@ -53,7 +56,7 @@ function AddProduct({list, isLoading}) {
               placeholder="Kitties"
             />
           </FormContainer>
-          <button className={s.add_product_button} type="button" onClick={(e) => console.log(e)}>
+          <button className={s.add_product_button} type="button" onClick={(e) => addProducts(e)}>
             Submit
           </button>
         </div>

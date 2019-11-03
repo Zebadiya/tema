@@ -2,6 +2,25 @@ import * as actions from './productsActions';
 import Api, { schemas } from '../../api';
 import { normalize } from 'normalizr';
 
+export function addProducts() {
+  return async function addProductThunk(dispatch) {
+    try {
+      dispatch(actions.addProduct.start());
+
+      const res = await Api.Products.addProduct();
+
+      const { result, entities } = normalize(
+        res.data,
+        schemas.ProductList,
+      );
+
+      dispatch(actions.addProduct.success({ result, entities }));
+    } catch (err) {
+      dispatch(actions.addProduct.error({ message: err.message}),);
+    }
+  };
+}
+
 export function products() {
   return async function fetchLatestThunk(dispatch) {
     try {

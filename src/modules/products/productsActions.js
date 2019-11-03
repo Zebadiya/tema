@@ -6,4 +6,8 @@ export const fetchLatest = createAsyncActions(
 export const fetchProduct = createAsyncActions(
   'products/FETCH_PRODUCT',
 );
+export const addProduct = createAsyncActions(
+  'products/ADD_PRODUCT',
+);
+
 
