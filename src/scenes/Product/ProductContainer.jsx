@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { productsOperations, productsSelectors } from '../../modules/products';
 import Product from './ProductView';
-import { withRouter } from 'react-router';
 
 
 const mapStateToProps = (state, props) => {
@@ -30,4 +29,4 @@ function AddProductContainer(props) {
 
 const ProductConnect = connect(mapStateToProps, mapDispatchToProps)(AddProductContainer);
 
-export default withRouter(ProductConnect);
+export default ProductConnect;

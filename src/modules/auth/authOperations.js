@@ -9,6 +9,7 @@ export function login(body) {
       const res = await Api.Auth.login(body);
       const { user, token } = res.data;
       Api.Auth.setToken(token);
+      Api.Auth.setUser(user);
 
       dispatch(actions.login.success(user));
     } catch (err) {
@@ -25,6 +26,7 @@ export function register(body) {
       const res = await Api.Auth.register(body);
       const { user, token } = res.data;
       Api.Auth.setToken(token);
+      Api.Auth.setUser(user);
 
       dispatch(actions.register.success(user));
     } catch (err) {

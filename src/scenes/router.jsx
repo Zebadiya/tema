@@ -14,12 +14,15 @@ import Search from './Search/Search';
 import AddProduct from './AddProduct/AddProductContainer';
 import Api from '../api';
 import {routes} from './routes';
+import Product from './Product/ProductContainer';
 
 function Router() {
   return (
     <BrowserRouter>
       <Switch>
         <Route path={routes.home} component={Home} exact/>
+        <Route path={routes.addProduct} component={AddProduct} exact/>
+        <Route path={routes.product} component={Product} />
         <Route path={routes.auth} component={Auth} />
         <PrivateRoute path={routes.inbox} component={Inbox} />
         <Route path={routes.privacy} component={Privacy} />
@@ -29,7 +32,6 @@ function Router() {
         <Route path={routes.users} component={Users} />
         <Route path={routes.listings} component={Listings} />
         <Route path={routes.search} component={Search} />
-        <Route path={routes.addProduct} component={AddProduct} />
         <Auth />
         <Route component={NotFound} />
       </Switch>

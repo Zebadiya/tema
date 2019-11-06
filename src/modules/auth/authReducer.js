@@ -25,12 +25,13 @@ export default handleActions(
         isError: false,
       }
     }),
-    [actions.login.success]: (state) => ({
+    [actions.login.success]: (state, action) => ({
       ...state,
       login: {
         ...state.login,
         isLoading: false,
-      }
+      },
+      user: action.payload,
     }),
     [actions.login.error]: (state, action) => ({
       ...state,
@@ -51,12 +52,13 @@ export default handleActions(
         isError: false,
       }
     }),
-    [actions.register.success]: (state) => ({
+    [actions.register.success]: (state, action) => ({
       ...state,
       register: {
         ...state.register,
         isLoading: false,
-      }
+      },
+      user: action.payload,
     }),
     [actions.register.error]: (state, action) => ({
       ...state,

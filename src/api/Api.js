@@ -10,6 +10,7 @@ const urls = {
 
 export const Auth = {
   _token: null,
+  _user: null,
 
   get isLoggedIn() {
     return !!this._token;
@@ -21,10 +22,17 @@ export const Auth = {
     this._setTokenToAxios(token);
   },
 
+  setUser(user) {
+    this._user = user;
+    this._storeUser(user);
+  },
+
   init() {
     try {
       const token = window.localStorage.getItem('token');
+      const user = window.localStorage.getItem('user');
       this._token = JSON.parse(token);
+      this._user = JSON.parse(user);
       this._setTokenToAxios(token);
     } catch (err) {
       console.error(err);
@@ -51,6 +59,14 @@ export const Auth = {
   _storeToken() {
     try {
       window.localStorage.setItem('token', JSON.stringify(this._token));
+    } catch (err) {
+      console.log(err)
+    }
+  },
+
+  _storeUser() {
+    try {
+      window.localStorage.setItem('user', JSON.stringify(this._user));
     } catch (err) {
       console.log(err)
     }

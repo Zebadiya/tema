@@ -22,7 +22,7 @@ const mapDispatchToProps = {
   fetchViewer: viewerOperations.fetchViewer,
 };
 
-function Header({isLightDesign = false}) {
+function Header({isLightDesign = false, viewer, fetchViewer}) {
   const {isLoggedIn} = Api.Auth;
   const handleLogout = () => {
     Api.Auth.logout();
@@ -34,6 +34,13 @@ function Header({isLightDesign = false}) {
     modal.style.display = modal.classList.contains("open") ? "block" : "none";
   };
 
+  const getViewer = async () => await fetchViewer();
+
+  useEffect(() => {
+    console.log('viewer!', viewer);
+   !viewer && getViewer();
+  }, [viewer, getViewer]);
+  console.log('viewer!!', viewer);
   return (
     <header className={`${s.header} ${isLightDesign ? s.light : ''}`}>
       <div className={s.header_container}>
@@ -63,6 +70,4 @@ function Header({isLightDesign = false}) {
   );
 }
 
-const HeaderConnect = connect(mapStateToProps, mapDispatchToProps)(Header);
-
-export default HeaderConnect;
+export default connect(mapStateToProps, mapDispatchToProps)(Header);

@@ -2,12 +2,12 @@ import * as actions from './productsActions';
 import Api, { schemas } from '../../api';
 import { normalize } from 'normalizr';
 
-export function addProducts() {
+export function addProducts(body) {
   return async function addProductThunk(dispatch) {
     try {
       dispatch(actions.addProduct.start());
 
-      const res = await Api.Products.addProduct();
+      const res = await Api.Products.addProduct(body);
 
       const { result, entities } = normalize(
         res.data,

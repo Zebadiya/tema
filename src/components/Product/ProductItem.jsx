@@ -1,8 +1,5 @@
 import React from 'react';
-import { generatePath, Link, BrowserRouter } from 'react-router-dom';
 import s from './ProductItem.module.scss';
-import { routes } from '../../scenes/routes';
-import { withRouter } from 'react-router';
 
 function ProductItem({item}) {
   const {title, id, photos, price, saved} = item;

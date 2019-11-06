@@ -12,7 +12,7 @@ function InputTextAdd({name, ...props}) {
                     className={s.input}
                     value={value}
                     placeholder={placeholder}
-                    onChange={(e) => handleChange(e.target.value)}
+                    onChange={(e) => handleChange(name, e.target.value)}
                     {...props}>
           </textarea>
         </label>)}
