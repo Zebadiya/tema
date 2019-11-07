@@ -40,6 +40,9 @@ function Header({isLightDesign = false, viewer, fetchViewer}) {
     console.log('viewer!', viewer);
    !viewer && getViewer();
   }, [viewer, getViewer]);
+
+  const initials = viewer && viewer.fullName.match(/[A-Z]/g).join("");
+
   console.log('viewer!!', viewer);
   return (
     <header className={`${s.header} ${isLightDesign ? s.light : ''}`}>
@@ -54,7 +57,7 @@ function Header({isLightDesign = false, viewer, fetchViewer}) {
           <Link to={routes.addProduct} className={s.sell}>Sell</Link>
           <div className={s.log_button}>
             {isLoggedIn
-              ? <InfoModal handleLogout={handleLogout} openModal={openModal}/>
+              ? <InfoModal handleLogout={handleLogout} initials={initials} openModal={openModal}/>
               : <Link to={routes.login}>Login</Link>
             }
           </div>

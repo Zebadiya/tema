@@ -33,7 +33,7 @@ export const Auth = {
       const user = window.localStorage.getItem('user');
       this._token = JSON.parse(token);
       this._user = JSON.parse(user);
-      this._setTokenToAxios(token);
+      this._setTokenToAxios(this._token);
     } catch (err) {
       console.error(err);
     }

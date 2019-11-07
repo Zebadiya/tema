@@ -21,8 +21,6 @@ function Router() {
     <BrowserRouter>
       <Switch>
         <Route path={routes.home} component={Home} exact/>
-        <Route path={routes.addProduct} component={AddProduct} exact/>
-        <Route path={routes.product} component={Product} />
         <Route path={routes.auth} component={Auth} />
         <PrivateRoute path={routes.inbox} component={Inbox} />
         <Route path={routes.privacy} component={Privacy} />
@@ -32,6 +30,8 @@ function Router() {
         <Route path={routes.users} component={Users} />
         <Route path={routes.listings} component={Listings} />
         <Route path={routes.search} component={Search} />
+        <Route path={routes.addProduct} component={AddProduct} exact/>
+        <Route path={routes.product} component={Product} />
         <Auth />
         <Route component={NotFound} />
       </Switch>

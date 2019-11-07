@@ -3,10 +3,11 @@ import s from './InfoModal.module.scss';
 import { Link } from 'react-router-dom';
 import { routes } from '../../../scenes/routes';
 
-function InfoModal({handleLogout, openModal}) {
+function InfoModal({handleLogout, openModal, initials}) {
+
   return <div className={s.logout_container}>
     <div className={s.logout_icon} onClick={openModal}>
-      <span className={s.logout_icon_text}>TZ</span>
+      <span className={s.logout_icon_text}>{initials}</span>
     </div>
     <div className={`logout_modal ${s.logout_modal}`}>
       <div className={s.modal_short_info}>
