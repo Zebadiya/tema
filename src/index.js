@@ -32,6 +32,7 @@ function mapStateToProps(state) {
 }
 
 const AppConnected = connect(mapStateToProps)(App);
+
 function AppProvider() {
   return <Provider store={store}><AppConnected /></Provider>
 }

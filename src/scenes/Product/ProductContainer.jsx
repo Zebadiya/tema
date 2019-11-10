@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { productsOperations, productsSelectors } from '../../modules/products';
 import Product from './ProductView';
+import { Footer, Header } from '../../components';
 
 
 const mapStateToProps = (state, props) => {
@@ -24,7 +25,13 @@ function AddProductContainer(props) {
     }
   }, [owner, product, isLoading, props]);
 
-  return <Product product={product} owner={owner} isLoading={isLoading}/>
+  return (
+    <>
+      <Header />
+      <Product product={product} owner={owner} isLoading={isLoading}/>
+      <Footer />
+    </>
+  )
 }
 
 const ProductConnect = connect(mapStateToProps, mapDispatchToProps)(AddProductContainer);

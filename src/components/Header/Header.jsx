@@ -26,12 +26,19 @@ function Header({isLightDesign = false, viewer, fetchViewer}) {
   const {isLoggedIn} = Api.Auth;
   const handleLogout = () => {
     Api.Auth.logout();
+    closeModal();
+  };
+
+  const closeModal = () => {
+    const modal = document.getElementsByClassName("logout_modal")[0];
+    modal && modal.classList.remove("open");
+    modal.style.display = "none";
   };
 
   const openModal = () => {
     const modal = document.getElementsByClassName("logout_modal")[0];
-    modal && modal.classList.toggle("open");
-    modal.style.display = modal.classList.contains("open") ? "block" : "none";
+    modal && modal.classList.add("open");
+    modal.style.display = "block";
   };
 
   const getViewer = async () => await fetchViewer();
@@ -39,6 +46,7 @@ function Header({isLightDesign = false, viewer, fetchViewer}) {
   useEffect(() => {
     console.log('viewer!', viewer);
    !viewer && getViewer();
+   document.addEventListener('click', closeModal);
   }, [viewer, getViewer]);
 
   const initials = viewer && viewer.fullName.match(/[A-Z]/g).join("");

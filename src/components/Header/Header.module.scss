@@ -46,7 +46,8 @@ $text-color-dark: #2B2B2B;
 
     .log_button {
       margin-right: 40px;
-      a {
+      &>a {
+        color: $text-color-light;
         text-decoration: none;
       }
     }

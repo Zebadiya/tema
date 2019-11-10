@@ -5,7 +5,7 @@ import { routes } from '../../../scenes/routes';
 
 function InfoModal({handleLogout, openModal, initials}) {
 
-  return <div className={s.logout_container}>
+  return <div className={s.logout_container} onClick={(e) => e.stopPropagation()}>
     <div className={s.logout_icon} onClick={openModal}>
       <span className={s.logout_icon_text}>{initials}</span>
     </div>
