@@ -27,18 +27,26 @@ function Header({isLightDesign = false, viewer, fetchViewer}) {
   const handleLogout = () => {
     Api.Auth.logout();
     closeModal();
+    window.location.reload(false);
   };
 
   const closeModal = () => {
     const modal = document.getElementsByClassName("logout_modal")[0];
-    modal && modal.classList.remove("open");
-    modal.style.display = "none";
+    if (modal) {
+      modal.classList.remove("open");
+      modal.style.display = "none";
+      window.removeEventListener('click', closeModal);
+    }
   };
 
-  const openModal = () => {
+  const openModal = (e) => {
     const modal = document.getElementsByClassName("logout_modal")[0];
-    modal && modal.classList.add("open");
-    modal.style.display = "block";
+    if (modal) {
+      modal.classList.add("open");
+      modal.style.display = "block";
+      e.stopPropagation();
+      window.addEventListener('click', closeModal);
+    }
   };
 
   const getViewer = async () => await fetchViewer();
@@ -46,7 +54,7 @@ function Header({isLightDesign = false, viewer, fetchViewer}) {
   useEffect(() => {
     console.log('viewer!', viewer);
    !viewer && getViewer();
-   document.addEventListener('click', closeModal);
+
   }, [viewer, getViewer]);
 
   const initials = viewer && viewer.fullName.match(/[A-Z]/g).join("");
@@ -65,7 +73,7 @@ function Header({isLightDesign = false, viewer, fetchViewer}) {
           <Link to={routes.addProduct} className={s.sell}>Sell</Link>
           <div className={s.log_button}>
             {isLoggedIn
-              ? <InfoModal handleLogout={handleLogout} initials={initials} openModal={openModal}/>
+              ? <InfoModal handleLogout={handleLogout} initials={initials} openModal={(e) => openModal(e)}/>
               : <Link to={routes.login}>Login</Link>
             }
           </div>

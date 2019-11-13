@@ -5,11 +5,11 @@ import { routes } from '../../../scenes/routes';
 
 function InfoModal({handleLogout, openModal, initials}) {
 
-  return <div className={s.logout_container} onClick={(e) => e.stopPropagation()}>
+  return <div className={s.logout_container}>
     <div className={s.logout_icon} onClick={openModal}>
       <span className={s.logout_icon_text}>{initials}</span>
     </div>
-    <div className={`logout_modal ${s.logout_modal}`}>
+    <div className={`logout_modal ${s.logout_modal}`} onClick={(e) => e.stopPropagation()}>
       <div className={s.modal_short_info}>
         <div className={s.logout_icon}>
           <span className={s.logout_icon_text}>TZ</span>

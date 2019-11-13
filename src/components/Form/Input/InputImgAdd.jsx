@@ -8,12 +8,12 @@ function InputImgAdd({name, ...props}) {
     <FormInput htmlFor={name}>
       {({handleChange, value, error }) => (
         <label className={s.label}>{label}
-          <input type='img'
+          <input type='file'
+                 src="URL"
                  id={name}
                  className={s.input}
-                 value={value}
                  placeholder={placeholder}
-                 onChange={(e) => handleChange(name, e.target.value)}
+                 onChange={(e) => handleChange(name, e.target.files[0], true)}
                  {...props}>
           </input>
         </label>)}

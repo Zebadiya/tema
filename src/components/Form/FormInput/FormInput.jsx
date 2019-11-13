@@ -5,11 +5,11 @@ import { FormContext } from '../FormContainer/FormContainer';
 function FormInput({label, name, validate, ...props}) {
   const { formState, onChange, setError, getError } = useContext(FormContext);
 
-  function handleChange(name, value) {
+  function handleChange(name, value, isImages) {
     if (validate) {
       setError(name, validate(value));
     }
-    onChange(name, value);
+    onChange(name, value, isImages);
   }
   const error = getError(name);
 

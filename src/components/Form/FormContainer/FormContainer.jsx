@@ -12,7 +12,10 @@ class FormContainer extends Component {
     }
   }
 
-  onChange(name, value) {
+  onChange(name, value, isImages = false) {
+    if (isImages) {
+      value = [URL.createObjectURL(value)];
+    }
     this.setState({ values: {
         ...this.state.values,
         [name]: value,
@@ -35,7 +38,7 @@ class FormContainer extends Component {
   render() {
     const value = {
       formState: this.state.values,
-      onChange: (name, value) => this.onChange(name, value),
+      onChange: (name, value, isImages) => this.onChange(name, value, isImages),
       setError: (name, error) => this.setError(name, error),
       getError: (name) => this.getError(name),
     };

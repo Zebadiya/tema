@@ -6,6 +6,7 @@ import AddProduct from './AddProductView';
 const mapStateToProps = (state) => {
   return {
     isLoading: state.products.addProduct.isLoading,
+    error: state.products.addProduct.error,
   };
 };
 

@@ -30,8 +30,8 @@ function Router() {
         <Route path={routes.users} component={Users} />
         <Route path={routes.listings} component={Listings} />
         <Route path={routes.search} component={Search} />
-        <Route path={routes.product} component={Product} exact/>
         <Route path={routes.addProduct} component={AddProduct} exact />
+        <Route path={routes.product} component={Product} exact/>
         <Auth />
         <Route component={NotFound} />
       </Switch>
