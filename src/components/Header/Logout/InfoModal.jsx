@@ -12,10 +12,10 @@ function InfoModal({handleLogout, openModal, initials}) {
     <div className={`logout_modal ${s.logout_modal}`} onClick={(e) => e.stopPropagation()}>
       <div className={s.modal_short_info}>
         <div className={s.logout_icon}>
-          <span className={s.logout_icon_text}>TZ</span>
+          <span className={s.logout_icon_text}>{initials}</span>
         </div>
         <div className={s.modal_short_info_container}>
-          <Link to={routes.profile} >Profile</Link>
+          <Link to={routes.profile}>Profile</Link>
         </div>
       </div>
       <Link to={routes.profile} className={s.logout_edit_profile}>Edit profile</Link>

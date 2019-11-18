@@ -11,8 +11,7 @@ import { viewerOperations } from '../../modules/viewer';
 import InfoModal from './Logout/InfoModal';
 import { connect } from 'react-redux';
 
-const mapStateToProps = (state, props) => {
-  console.log("viewer", state);
+const mapStateToProps = (state) => {
   return {
     viewer: state.viewer.user,
   };
@@ -52,14 +51,12 @@ function Header({isLightDesign = false, viewer, fetchViewer}) {
   const getViewer = async () => await fetchViewer();
 
   useEffect(() => {
-    console.log('viewer!', viewer);
    !viewer && getViewer();
 
   }, [viewer, getViewer]);
 
   const initials = viewer && viewer.fullName.match(/[A-Z]/g).join("");
 
-  console.log('viewer!!', viewer);
   return (
     <header className={`${s.header} ${isLightDesign ? s.light : ''}`}>
       <div className={s.header_container}>
@@ -73,7 +70,7 @@ function Header({isLightDesign = false, viewer, fetchViewer}) {
           <Link to={routes.addProduct} className={s.sell}>Sell</Link>
           <div className={s.log_button}>
             {isLoggedIn
-              ? <InfoModal handleLogout={handleLogout} initials={initials} openModal={(e) => openModal(e)}/>
+              ? <InfoModal handleLogout={handleLogout} initials={initials} viewer={viewer} openModal={(e) => openModal(e)}/>
               : <Link to={routes.login}>Login</Link>
             }
           </div>

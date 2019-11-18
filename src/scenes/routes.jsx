@@ -8,7 +8,7 @@ export const routes = {
   privacy: '/privacy',
   terms: './terms',
   bookmarks: './bookmarks',
-  profile: './profile',
+  profile: '/profile',
   users: './users/:id',
   listings: './listings/:id',
   search: './search',
