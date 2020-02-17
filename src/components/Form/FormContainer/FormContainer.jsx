@@ -9,18 +9,31 @@ class FormContainer extends Component {
     this.state = {
       values: props.initialValue,
       errors: {},
-    }
+    };
+
+    this.onChange = this.onChange.bind(this);
+    this.setError = this.setError.bind(this);
+    this.getError = this.getError.bind(this);
   }
 
   onChange(name, value, isImages = false) {
     if (isImages) {
-      value = [URL.createObjectURL(value)];
-    }
-    this.setState({ values: {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        const img = new Image();
+        img.src = reader.result;
+        this.setState({ values: {
+          ...this.state.values,
+          photos: [...this.state.values.photos, img.src],
+        }});
+      };
+      reader.readAsDataURL(value)
+    } else {
+      this.setState({ values: {
         ...this.state.values,
         [name]: value,
-      }
-    });
+      }});
+    }
   }
 
   setError(name, error) {

@@ -17,7 +17,9 @@ const mapDispatchToProps = {
 function AddProductContainer(props) {
 
   const addNewProducts = async (body) => {
-    await props.addProducts(body);
+    await props.addProducts(body).then((res) => {
+      console.log("add Product action", res)
+    });
   };
 
   return (

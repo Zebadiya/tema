@@ -11,8 +11,11 @@ function InputImgAdd({name, ...props}) {
           <input type='file'
                  src="URL"
                  id={name}
+                 name="file"
+                 accept="image/*"
                  className={s.input}
                  placeholder={placeholder}
+                 capture="environment"
                  onChange={(e) => handleChange(name, e.target.files[0], true)}
                  {...props}>
           </input>

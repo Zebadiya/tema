@@ -15,6 +15,8 @@ const mapDispatchToProps = {
 };
 
 function LatestListContainer(props) {
+  console.log('LatestListContainer')
+
   useEffect(() => {
     if (props.list.length === 0) {
       props.fetchLatest().then((res) => {
