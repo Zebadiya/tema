@@ -9,7 +9,7 @@ function AddProduct({addProducts, isLoading}) {
     location: '',
     description: '',
     photos: [],
-    price: '',
+    price: 0,
   };
 
   function required(value) {

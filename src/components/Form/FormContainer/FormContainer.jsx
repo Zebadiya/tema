@@ -29,6 +29,9 @@ class FormContainer extends Component {
       };
       reader.readAsDataURL(value)
     } else {
+      if (name === "price") {
+        Number.parseInt(value, 10);
+      }
       this.setState({ values: {
         ...this.state.values,
         [name]: value,
