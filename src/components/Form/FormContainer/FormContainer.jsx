@@ -24,7 +24,10 @@ class FormContainer extends Component {
         img.src = reader.result;
         this.setState({ values: {
           ...this.state.values,
-          photos: [...this.state.values.photos, img.src],
+          photos: [
+            ...this.state.values.photos,
+            img.src
+          ],
         }});
       };
       reader.readAsDataURL(value)
@@ -34,7 +37,6 @@ class FormContainer extends Component {
       }
       this.setState({ values: {
         ...this.state.values,
-        [name]: value,
       }});
     }
   }

@@ -14,3 +14,17 @@ export function fetchViewer() {
     }
   };
 }
+
+export function setViewer(data) {
+  return async function setViewerThunk(dispatch) {
+    try {
+      dispatch(actions.setViewer.start());
+
+      const res = await Api.Viewer.set(data);
+
+      dispatch(actions.setViewer.success());
+    } catch (err) {
+      dispatch(actions.setViewer.error({ message: err.message}),);
+    }
+  };
+}

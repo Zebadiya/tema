@@ -64,6 +64,9 @@ export const Auth = {
 export const Viewer = {
   get() {
     return axios.get(urls.getViewer)
+  },
+  set() {
+    return axios.put(urls.getViewer)
   }
 };
 
