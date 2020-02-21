@@ -55,6 +55,9 @@ $border: #E4E4E4;
       display: block;
       padding: 12px 16px;
       color: $green-button;
+      &:hover {
+        text-decoration: none;
+      }
       &.logout_edit_profile {
         border-bottom: 1px solid $border;
       }
