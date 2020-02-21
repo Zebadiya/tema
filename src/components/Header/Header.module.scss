@@ -1,4 +1,5 @@
 $green-button: #349A89;
+$green-button-hover: #277367;
 $text-color-light: #fff;
 $text-color-dark: #2B2B2B;
 
@@ -36,13 +37,18 @@ $text-color-dark: #2B2B2B;
       color: $text-color-light;
       border-radius: 4px;
       text-decoration: none;
+      &:hover {
+        transition: .5s;
+        background: $green-button-hover;
+        cursor: pointer;
+      }
     }
 
     .log_button {
       margin-right: 40px;
-      a {
-        text-decoration: none;
+      &>a {
         color: $text-color-light;
+        text-decoration: none;
       }
     }
 
@@ -63,5 +69,14 @@ $text-color-dark: #2B2B2B;
     }
 
 
+  }
+}
+
+@media (max-width: 1184px) {
+  .header {
+    .header_container {
+      max-width: 100%;
+      padding: 18px 32px;
+    }
   }
 }

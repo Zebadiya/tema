@@ -11,30 +11,16 @@ import Profile from './Profile/Profile';
 import Users from './Users/Users';
 import Listings from './Listings/Listings';
 import Search from './Search/Search';
+import AddProduct from './AddProduct/AddProductContainer';
 import Api from '../api';
-
-export const routes = {
-  home: '/',
-  login: '/auth/login',
-  register: '/auth/register',
-  auth: '/auth',
-  inbox: '/inbox',
-  sell: '/sell',
-  favorite: '/favorite',
-  privacy: '/privacy',
-  terms: './terms',
-  bookmarks: './bookmarks',
-  profile: './profile',
-  users: './users/:id',
-  listings: './listings/:id',
-  search: './search',
-};
+import {routes} from './routes';
+import Product from './Product/ProductContainer';
 
 function Router() {
   return (
     <BrowserRouter>
       <Switch>
-        <Route exact path={routes.home} component={Home} />
+        <Route path={routes.home} component={Home} exact/>
         <Route path={routes.auth} component={Auth} />
         <PrivateRoute path={routes.inbox} component={Inbox} />
         <Route path={routes.privacy} component={Privacy} />
@@ -44,6 +30,8 @@ function Router() {
         <Route path={routes.users} component={Users} />
         <Route path={routes.listings} component={Listings} />
         <Route path={routes.search} component={Search} />
+        <Route path={routes.addProduct} component={AddProduct} exact />
+        <Route path={routes.product} component={Product} exact/>
         <Auth />
         <Route component={NotFound} />
       </Switch>

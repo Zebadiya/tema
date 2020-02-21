@@ -1,0 +1,19 @@
+.latest_list {
+  display: grid;
+  grid-template-columns: repeat(4, 24% );
+  grid-auto-rows: minmax(100px, auto);
+  grid-column-gap: 10px;
+  grid-row-gap: 20px;
+  max-width: 860px;
+  margin: 15px auto;
+
+  a {
+    text-decoration: none;
+  }
+}
+
+@media (max-width: 992px) {
+  .latest_list {
+    width: 90%;
+  }
+}

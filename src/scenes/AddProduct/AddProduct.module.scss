@@ -1,0 +1,40 @@
+$green-button: #349A89;
+$green-button-hover: #277367;
+$text-color-light: #fff;
+
+.add_product {
+  .add_product_container {
+    width: 80%;
+    height: auto;
+    margin: 34px auto;
+    padding: 15px;
+    box-shadow: 0px 2px 42px rgba(0, 0, 0, 0.111233);
+    background: #FFFFFF;
+    border-radius: 7px;
+  }
+  h3 {
+    text-align: center;
+  }
+  textarea {
+    min-height: 180px;
+  }
+  .add_product_form {
+    width: 70%;
+    margin: 34px auto;
+  }
+  .add_product_button {
+    width: 370px;
+    display: block;
+    margin: 32px auto;
+    padding: 18px 24px;
+    background: $green-button;
+    border-radius: 5px;
+    font-size: 16px;
+    color: $text-color-light;
+    &:hover {
+      transition: .5s;
+      background: $green-button-hover;
+      cursor: pointer;
+    }
+  }
+}

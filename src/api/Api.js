@@ -3,6 +3,9 @@ import axios from 'axios';
 const urls = {
   login: '/api/auth/login',
   register: '/api/auth/register',
+  getViewer: '/api/account/user',
+  productsLatest: '/api/products/latest',
+  products: '/api/products',
 };
 
 export const Auth = {
@@ -22,10 +25,14 @@ export const Auth = {
     try {
       const token = window.localStorage.getItem('token');
       this._token = JSON.parse(token);
-      this._setTokenToAxios(token);
+      this._setTokenToAxios(this._token);
     } catch (err) {
       console.error(err);
     }
+  },
+
+  register(body) {
+    return axios.post(urls.register, body);
   },
 
   login(body) {
@@ -50,9 +57,29 @@ export const Auth = {
   },
 
   _setTokenToAxios(token) {
-    axios.defaults.headers.Authorization = `Bearer ${token}`;
-    console.log('axios', axios)
+    axios.defaults.headers.common.Authorization = `Bearer ${token}`;
   },
+};
+
+export const Viewer = {
+  get() {
+    return axios.get(urls.getViewer)
+  },
+  set() {
+    return axios.put(urls.getViewer)
+  }
+};
+
+export const Products = {
+  getLatest() {
+    return axios.get(urls.productsLatest)
+  },
+  get(id) {
+    return axios.get(`${urls.products}/${id}`);
+  },
+  addProduct(body) {
+      return axios.post(urls.products, body);
+  }
 };
 
 export function init() {

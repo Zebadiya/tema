@@ -2,7 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider, connect } from 'react-redux';
 import Router from './scenes/router';
-import Api from './api'
 import store from './store/createStore';
 import { appOperations } from './modules/app';
 import './style.css';
@@ -33,7 +32,10 @@ function mapStateToProps(state) {
 }
 
 const AppConnected = connect(mapStateToProps)(App);
-const AppProvider = () => <Provider store={store}><AppConnected /></Provider>;
+
+function AppProvider() {
+  return <Provider store={store}><AppConnected /></Provider>
+}
 
 ReactDOM.render(
   <AppProvider />,

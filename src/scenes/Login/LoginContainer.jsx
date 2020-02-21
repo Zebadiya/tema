@@ -1,9 +1,10 @@
 import { compose, withHandlers, withStateHandlers } from 'recompose';
 import { connect } from 'react-redux';
 import LoginView from './LoginView';
-import { routes } from '../router';
+
 import { withRouter } from 'react-router-dom';
 import { authOperations } from '../../modules/auth';
+import { routes } from '../routes';
 
 function mapStateToProps(state) {
   console.log(state);

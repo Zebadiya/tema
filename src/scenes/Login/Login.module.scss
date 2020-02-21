@@ -1,3 +1,72 @@
-.login {
+$green-button: #349A89;
+$green-button-hover: #277367;
+$text-color-light: #fff;
 
+.login_container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 425px;
+  transform: translate(-50%, -50%);
+}
+
+.login {
+  padding: 24px;
+  margin-bottom: 20px;
+  background: $text-color-light;
+  box-shadow: 0 2px 42px rgba(0, 0, 0, 0.1);
+  border-radius: 7px;
+  box-sizing: border-box;
+
+  .login_title {
+    width: 50px;
+    margin: 0 auto 18px;
+    font-family: Helvetica, sans-serif;
+    font-size: 22px;
+  }
+
+  .remind {
+    display: inline-block;
+    text-align: right;
+    width: 100%;
+    color: #8C8C8C;
+    text-decoration: none;
+    margin-bottom: 16px;
+  }
+
+  .login_button {
+    width: 100%;
+    padding: 18px 0;
+    background: $green-button;
+    border-radius: 5px;
+    font-size: 16px;
+    color: $text-color-light;
+    &:hover {
+      transition: .5s;
+      background: $green-button-hover;
+      cursor: pointer;
+    }
+  }
+}
+
+.no_register {
+  padding: 30px;
+  background: $text-color-light;
+  box-shadow: 0 2px 42px rgba(0, 0, 0, 0.1);
+  border-radius: 7px;
+  box-sizing: border-box;
+  .no_register_text {
+    display: block;
+    text-align: center;
+    a {
+      text-transform: uppercase;
+      text-decoration: none;
+      color: $green-button;
+      &:hover {
+        transition: .5s;
+        color: $green-button-hover;
+        cursor: pointer;
+      }
+    }
+  }
 }

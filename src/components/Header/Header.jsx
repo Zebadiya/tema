@@ -1,17 +1,62 @@
-import React from 'react';
-import { Link, withRouter } from 'react-router-dom';
-import { routes } from '../../scenes/router';
+import React, { useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import { routes } from '../../scenes/routes';
 import s from './Header.module.scss';
-import { compose, withHandlers } from 'recompose';
 import * as Api from '../../api/Api';
 import logo_light from '../../image/icons/Logofull-light.svg';
 import logo from '../../image/icons/Logofull.svg';
 import heart from '../../image/icons/heart-outline.svg';
 import heart_light from '../../image/icons/heart-outline-light.svg';
+import { viewerOperations } from '../../modules/viewer';
+import InfoModal from './Logout/InfoModal';
+import { connect } from 'react-redux';
 
+const mapStateToProps = (state) => {
+  return {
+    viewer: state.viewer.user,
+  };
+};
 
-function Header({handleLogout, isLightDesign = false}) {
+const mapDispatchToProps = {
+  fetchViewer: viewerOperations.fetchViewer,
+};
+
+function Header({isLightDesign = false, viewer, fetchViewer}) {
   const {isLoggedIn} = Api.Auth;
+  const handleLogout = () => {
+    Api.Auth.logout();
+    closeModal();
+    window.location.reload(false);
+  };
+
+  const closeModal = () => {
+    const modal = document.getElementsByClassName("logout_modal")[0];
+    if (modal) {
+      modal.classList.remove("open");
+      modal.style.display = "none";
+      window.removeEventListener('click', closeModal);
+    }
+  };
+
+  const openModal = (e) => {
+    const modal = document.getElementsByClassName("logout_modal")[0];
+    if (modal) {
+      modal.classList.add("open");
+      modal.style.display = "block";
+      e.stopPropagation();
+      window.addEventListener('click', closeModal);
+    }
+  };
+
+  const getViewer = async () => await fetchViewer();
+
+  useEffect(() => {
+   !viewer && getViewer();
+
+  }, [viewer, getViewer]);
+
+  const initials = viewer && viewer.fullName.match(/[A-Z]/g).join("");
+
   return (
     <header className={`${s.header} ${isLightDesign ? s.light : ''}`}>
       <div className={s.header_container}>
@@ -22,10 +67,10 @@ function Header({handleLogout, isLightDesign = false}) {
 
         </Link>
         <div className={s.header_left_side}>
-          <Link to={routes.sell} className={s.sell}>Sell</Link>
+          <Link to={routes.addProduct} className={s.sell}>Sell</Link>
           <div className={s.log_button}>
             {isLoggedIn
-              ? <Link to={routes.home} onClick={handleLogout}>Logout</Link>
+              ? <InfoModal handleLogout={handleLogout} initials={initials} viewer={viewer} openModal={(e) => openModal(e)}/>
               : <Link to={routes.login}>Login</Link>
             }
           </div>
@@ -34,7 +79,6 @@ function Header({handleLogout, isLightDesign = false}) {
               ? <img className={s.favorite} src={heart_light} alt="Favorite"/>
               : <img className={s.favorite} src={heart} alt="Favorite"/>
             }
-
           </Link>
         </div>
       </div>
@@ -42,13 +86,4 @@ function Header({handleLogout, isLightDesign = false}) {
   );
 }
 
-const enhancer = compose(
-  withRouter,
-  withHandlers({
-    handleLogout: () => () => {
-      Api.Auth.logout();
-    }
-  }),
-);
-
-export default enhancer(Header);
+export default connect(mapStateToProps, mapDispatchToProps)(Header);
