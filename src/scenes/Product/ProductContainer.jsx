@@ -6,10 +6,12 @@ import { Footer, Header } from '../../components';
 
 
 const mapStateToProps = (state, props) => {
+  console.log('state', state);
   return {
     product: productsSelectors.getProduct(state, props.match.params.id),
     owner: productsSelectors.getProductOwner(state, props.match.params.id),
     isLoading: state.products.product.isLoading,
+    user: state.viewer.user,
   };
 };
 
@@ -18,7 +20,7 @@ const mapDispatchToProps = {
 };
 
 function AddProductContainer(props) {
-  const {product, owner, isLoading} = props;
+  const {product, owner, isLoading, user} = props;
   useEffect(() => {
     if (!owner || !product) {
       props.fetchProduct(props.match.params.id);
@@ -28,7 +30,7 @@ function AddProductContainer(props) {
   return (
     <>
       <Header />
-      <Product product={product} owner={owner} isLoading={isLoading}/>
+        <Product product={product} owner={owner} isLoading={isLoading} user={user}/>
       <Footer />
     </>
   )

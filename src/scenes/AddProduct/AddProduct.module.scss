@@ -17,6 +17,7 @@ $text-color-light: #fff;
   }
   textarea {
     min-height: 180px;
+    resize: vertical;
   }
   .add_product_form {
     width: 70%;

@@ -8,6 +8,7 @@ $green-button-hover: #277367;
 
 .product {
   display: flex;
+  flex: 1;
   margin: 20px auto;
 }
 
@@ -126,7 +127,7 @@ $green-button-hover: #277367;
     }
   }
 
-  a {
+  a, button {
     display: inline-block;
     width: 100%;
     padding: 14px 0;

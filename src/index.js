@@ -4,6 +4,7 @@ import { Provider, connect } from 'react-redux';
 import Router from './scenes/router';
 import store from './store/createStore';
 import { appOperations } from './modules/app';
+import { Spiner } from './components/index';
 import './style.css';
 
 class App extends React.Component {
@@ -15,7 +16,7 @@ class App extends React.Component {
 
   render() {
     if (this.props.isLoading) {
-      return <div>Loading...</div>
+      return <Spiner />
     }
     return (
       <div className="root">

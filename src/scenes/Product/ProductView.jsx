@@ -1,12 +1,14 @@
 import React from 'react';
 import s from './Product.module.scss';
 import { routes } from '../routes';
+import { Link } from 'react-router-dom';
+import { Spiner } from '../../components/index';
 
-function Product({product, owner, isLoading}) {
+function Product({product, owner, isLoading, user}) {
   const shouldShowLoading = isLoading || !owner;
-
+  const isMyProduct = user && owner && user.id === owner.id;
   if (!product) {
-    return <div>Loading...</div>
+    return <Spiner /> 
   }
   return (
     <div className={s.product}>
@@ -33,7 +35,7 @@ function Product({product, owner, isLoading}) {
       <div className={s.owner_container}>
         <div className={s.owner_block}>
           {shouldShowLoading
-            ? <div className={s.loading}>Loading...</div>
+            ? <Spiner darkTheme={true}/>
             : (<>
               <div className={s.avatar_block}>
                 <div className={s.avatar}>
@@ -41,13 +43,22 @@ function Product({product, owner, isLoading}) {
                 </div>
                 <div className={s.avatar_bg}></div>
               </div>
-              <p className={s.owner_name}>{owner.fullName}</p>
+              <Link to={routes.profile} className={s.owner_name} owner={owner}>{owner.fullName}</Link>
               <p className={s.owner_location}>{owner.location}</p>
             </>)
           }
         </div>
-        <a href={routes.home} className={s.blue_btn}>Chat with seller</a>
-        <a href={routes.home} className={s.white_btn}>Add to favorive</a>
+        {isMyProduct 
+          ? <React.Fragment>
+              <button className={s.blue_btn}>Edit product</button>
+              <button className={s.white_btn}>Delete product</button>
+            </React.Fragment>
+          : <React.Fragment>
+              <a href={routes.home} className={s.blue_btn}>Chat with seller</a>
+              <a href={routes.home} className={s.white_btn}>Add to favorive</a>
+            </React.Fragment>
+        }
+        
       </div>
     </div>
   )

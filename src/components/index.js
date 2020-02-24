@@ -2,3 +2,4 @@ export { default as Header } from './Header/Header';
 export { default as Input } from './Form/Input/Input';
 export { default as Footer } from './Footer/Footer';
 export { default as ProductItem } from './Product/ProductItem';
+export { default as Spiner } from './Spiner/Spiner';

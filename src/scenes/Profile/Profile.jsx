@@ -3,6 +3,7 @@ import s from './Profile.module.scss';
 import { viewerOperations } from '../../modules/viewer';
 import { connect } from 'react-redux';
 import ProfileView from './ProfileView';
+import { Spiner } from '../../components/index';
 
 const mapStateToProps = (state) => {
   console.log("At", state);
@@ -28,7 +29,7 @@ function Profile({fetchViewer, viewer}) {
 
 
   if (!viewer) {
-    return <div className={s.loading}>loading</div>;
+    return <Spiner /> ;
   }
 
   return(

@@ -31,6 +31,7 @@ $border: #E4E4E4;
   }
 
   .logout_modal {
+    z-index: 1;
     position: absolute;
     top: 64px;
     right: 0;
